@@ -15,6 +15,6 @@ class LanguageIdentifier:
     def rank(self, text:str):
         return self.model.rank(text)
 
-lid = LanguageIdentifier(Path("/Users/Lena/dev/LSTM_langid/models/LID_mixed_model.pkl"))
+lid = LanguageIdentifier(Path("/home/Lena/dev/LSTM_langid/models/LID_mixed_model.pkl"))
 print(lid.predict("Hello world"))
 print(lid.rank("Hello world"))

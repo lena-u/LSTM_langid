@@ -17,8 +17,8 @@ data_loading_ingredient = Ingredient('data_loader')
 def config():
     print("##", inspect.getfile(inspect.currentframe()))
 
-    train_path = "/Users/Lena/dev/LSTM_langid/datasets/processed/UD20langs"
-    test_path = "/Users/Lena/dev/LSTM_langid/datasets/processed/UD20langs/sub_dataset"
+    train_path = "/home/Lena/dev/LSTM_langid/datasets/processed/UD20langs"
+    test_path = "/home/Lena/dev/LSTM_langid/datasets/processed/UD20langs/sub_dataset"
     train_folds = [1, 2, 3, 4]
     test_folds = [0]
 
