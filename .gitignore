@@ -1,0 +1,10 @@
+/experiments/
+/datasets/UD20_raw_files/
+/datasets/opensubtitles_raw_files/
+/datasets/processedUD20/
+/datasets/L_UD20/
+
+datasets/UD20_raw_files/ud-treebanks-v2.5/UD_Ancient_Greek-Perseus/grc_perseus-ud-dev.conllu
+**/__pycache__
+venv/
+**/all.jsonl

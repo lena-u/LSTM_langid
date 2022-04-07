@@ -85,15 +85,19 @@ class LIDModel(nn.Module):
 
         _log.info(f"Running for {epochs} epochs")
         for epoch in range(epochs):
+            _log.info(f"--Running epoch {epoch}")
             self.train()
             avg_total_loss, num_correct_preds = 0, 0
             epoch_start_time = time.time()
+            _log.info("before randomize")
             train_dataset.randomize_data()
+            _log.info("before bucket batch sampler")
             sampler = BucketBatchSampler(batch_size, train_dataset)
             dataloader_train = DataLoader(train_dataset, shuffle=False, drop_last=False,
                                           collate_fn=self.pad_collate, sampler=sampler)
             # Logit is the pre-softmax scores
-            for idx, batch in enumerate(tqdm(dataloader_train, leave=False)):
+            _log.info("dataloader loaded")
+            for idx, batch in enumerate(tqdm(dataloader_train, leave=True)):
                 optimizer.zero_grad()
                 tensor_sentences, labels = batch
                 logit = self(tensor_sentences)
@@ -128,6 +132,7 @@ class LIDModel(nn.Module):
             tb_dev.add_scalar("Accuracy", accuracy, step_num)
             tb_dev.add_scalar("Loss", avg_total_loss, step_num)
             if experiment is not None:
+                _log.info("saving model")
                 self.save_model(experiment, "E" + str(epoch))
             _log.info("Time spent in epoch {0}: {1:.2f} ".format(epoch + 1, time.time() - epoch_start_time))
 

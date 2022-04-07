@@ -1,0 +1,14 @@
+{
+    "folds": "10",
+    "seed": "42",
+    "max_window": "50",
+    "min_window": "10",
+    "data_source": "UD20",
+    "dataset_path": "datasets/UD20_raw_files/ud-treebanks-v2.5",
+    "output_path": "datasets/processedUD20",
+    "force": "True",
+    "languages": "da, en, sv, no, de, cs, es, fr, pt, it, tr, nl, fi, pl, ro, hu, lt, ca, hr, et",
+    "exact_length": "False",
+    "eval_length": "50",
+    "num_examples": 1893201
+}

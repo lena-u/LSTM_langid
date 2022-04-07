@@ -1,9 +1,30 @@
 from time import sleep
+
+import sys
+print(sys.path)
+
+import os, inspect
+pth = os.path.dirname(
+        os.path.dirname(os.path.dirname(
+            os.path.abspath(
+                inspect.getfile(inspect.currentframe())
+            ))))
+print(pth)
+sys.path.insert(1, pth)
+
+pth = os.path.dirname(
+        os.path.dirname(
+            os.path.abspath(
+                inspect.getfile(inspect.currentframe())
+            )))
+print(pth)
+sys.path.insert(1, pth)
+
 from sacred.observers import FileStorageObserver
-from experiments.data_loading import data_loading_ingredient
+from src.experiments.data_loading import data_loading_ingredient
 from src.experiments.LSTM_experiment import LSTM_exp
 
-LSTM_exp.observers.append(FileStorageObserver('../experiments/LSTM_experimentmixed'))
+LSTM_exp.observers.append(FileStorageObserver('/Users/Lena/dev/LSTM_langid/experiments/LSTM_experimentmixed'))
 epochs = 25
 embedding_dims = [150]
 hidden_dims = [150]
@@ -17,12 +38,14 @@ optimizer = "adam"
 count = 1
 total = len(embedding_dims) * len(hidden_dims) * folds
 
+
+
 for i in range(folds):
     sleep(2)
     @data_loading_ingredient.config
     def update_cfg():
-        train_path = "../../datasets/processed/mixed"
-        test_path = "../../datasets/processed/mixed/sub_dataset"
+        train_path = "/Users/Lena/dev/LSTM_langid/datasets/processed/mixed"
+        test_path = "/Users/Lena/dev/LSTM_langid/datasets/processed/mixed/sub_dataset"
         train_folds = [(i + j + 1) % folds for j in range(folds - 1)]
         test_folds = [i]
     for emb_dim in embedding_dims:

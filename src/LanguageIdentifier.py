@@ -7,6 +7,7 @@ import os
 class LanguageIdentifier:
     def __init__(self, directory_path: Path):
         model_information_dict = torch.load(directory_path)
+        print(model_information_dict)
         self.model = LSTMLIDModel(model_information_dict['char_to_idx'], model_information_dict['lang_to_idx'], model_information_dict['embedding_dim'], model_information_dict['hidden_dim'], model_information_dict['layers'])
         self.model.load_state_dict(model_information_dict['model_state_dict'], strict=False)
     def predict(self, text:str):
@@ -14,6 +15,6 @@ class LanguageIdentifier:
     def rank(self, text:str):
         return self.model.rank(text)
 
-lid = LanguageIdentifier(Path("../models/LID_mixed_model.pkl"))
+lid = LanguageIdentifier(Path("/Users/Lena/dev/LSTM_langid/models/LID_mixed_model.pkl"))
 print(lid.predict("Hello world"))
 print(lid.rank("Hello world"))

@@ -7,13 +7,18 @@ from sacred import Ingredient, Experiment
 
 from language_datasets import LangIDDataSet
 
+import os, inspect
+print(inspect.getfile(inspect.currentframe()))
+
 data_loading_ingredient = Ingredient('data_loader')
 
 
 @data_loading_ingredient.config
 def config():
-    train_path = "../datasets/processed/UD20langs"
-    test_path = "../datasets/processed/UD20_10Char"
+    print("##", inspect.getfile(inspect.currentframe()))
+
+    train_path = "/Users/Lena/dev/LSTM_langid/datasets/processed/UD20langs"
+    test_path = "/Users/Lena/dev/LSTM_langid/datasets/processed/UD20langs/sub_dataset"
     train_folds = [1, 2, 3, 4]
     test_folds = [0]
 
