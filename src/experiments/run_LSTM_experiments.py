@@ -25,9 +25,9 @@ from src.experiments.data_loading import data_loading_ingredient
 from src.experiments.LSTM_experiment import LSTM_exp
 
 LSTM_exp.observers.append(FileStorageObserver('/home/Lena/dev/LSTM_langid/experiments/LSTM_experimentmixed'))
-epochs = 25
-embedding_dims = [150]
-hidden_dims = [150]
+epochs = 5
+embedding_dims = [64]
+hidden_dims = [64]
 weight_decay = 0.00001
 seed = 1
 lr = 0.1
